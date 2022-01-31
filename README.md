@@ -48,7 +48,7 @@ Data is provided in the [data folder](https://github.com/zenportinc/frontend-rea
   - if the last name on the list is Person 5 then the newest name should be Person 6
   - if the last name on the list is Person 10 and I delete Person 3 and Person 4 then newest names should be Person 11 and Person 12 respectively
 - when clicking on the logo on the navbar, it should go back to page 1
-- Create tests for 3 components. Should be at least 3 tests for the 3 components
+- Create tests for 3 components. Should be at least 3 tests for the 3 components. You may use any testing framework
 
 ### Notes
 
