@@ -17,6 +17,8 @@ interface ZenportEatsContextProps {
   setOrder: Dispatch<SetStateAction<Order>>;
   selectedIdx: number;
   setSelectedIdx: Dispatch<SetStateAction<number>>;
+  selectedTab: string | null; //Requirement-1 changes
+  setSelectedTab: Dispatch<SetStateAction<string | null>>; //Requirement-1 changes
   handleFoodItemAdd: (foodItem: FoodMenuItem) => void;
   handlePersonDelete: (personIdx: number) => void;
   handlePersonAdd: () => void;
@@ -35,6 +37,8 @@ const ZenportEatsContext = createContext<ZenportEatsContextProps>({
   setOrder: () => {},
   selectedIdx: 0,
   setSelectedIdx: () => {},
+  selectedTab: null, //Requirement-1 changes
+  setSelectedTab: () => {}, //Requirement-1 changes
   handleFoodItemAdd: () => {},
   handlePersonDelete: () => {},
   handlePersonAdd: () => {},
@@ -48,6 +52,7 @@ export const ZenportEatsProvider = ({ children }: Props) => {
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState<Order>(defaultOrder);
   const [selectedIdx, setSelectedIdx] = useState(0);
+  const [selectedTab, setSelectedTab] = useState<string | null>(null); //Requirement-1 changes
 
   const handleFoodItemAdd = (foodItem: FoodMenuItem) => {
     const newOrders = [...order.orders];
@@ -101,6 +106,8 @@ export const ZenportEatsProvider = ({ children }: Props) => {
         order,
         setOrder,
         selectedIdx,
+        selectedTab, //Requirement-1 changes
+        setSelectedTab, //Requirement-1 changes
         setSelectedIdx,
         handleFoodItemAdd,
         handlePersonDelete,

@@ -1,5 +1,5 @@
 import { ContainerStyle, FoodSelectionContainer, SectionStyle } from './styles';
-import { FoodTypes, foods } from '@modules/ZenportEats/data/food-menu';
+import { FoodTypes, foods, FoodMenuItem } from '@modules/ZenportEats/data/food-menu';
 
 import FoodSelection from '@components/FoodSelection';
 import FoodTypeTabs from '@components/FoodTypeTabs';
@@ -13,22 +13,29 @@ const Frame2 = () => {
     setPage,
     selectedIdx,
     setSelectedIdx,
+    selectedTab, //Requirement-1 changes
     handleFoodItemAdd,
     handlePersonDelete,
     handlePersonAdd,
   } = useZenportEats();
+
+  //Requirement-1 changes
+  let filteredFoods: { [key: string]: FoodMenuItem[] };
+  filteredFoods = selectedTab
+    ? { [selectedTab]: [...foods[selectedTab as FoodTypes]] }
+    : { ...foods };
 
   return (
     <ContainerStyle>
       <SectionStyle $padding $width={350}>
         <FoodTypeTabs />
         <FoodSelectionContainer>
-          {Object.keys(foods).map((foodType) => {
+          {Object.keys(filteredFoods).map((foodType) => {
             return (
               <FoodSelection
                 key={foodType}
                 foodType={foodType as FoodTypes}
-                foodItems={foods[foodType as FoodTypes]}
+                foodItems={filteredFoods[foodType as FoodTypes]}
                 onFoodItemAdd={handleFoodItemAdd}
               />
             );
