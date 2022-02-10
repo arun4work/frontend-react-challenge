@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styled from 'styled-components';
+import { useZenportEats } from '@modules/ZenportEats/hooks/useZenportEats';
 
 const HeaderStyle = styled.div`
   padding: 1rem 3rem;
@@ -19,14 +20,17 @@ const LogoWrapperStyle = styled.span`
   }
 `;
 
-interface Props {
-  onIconClick: () => void;
-}
+//Requirement-4 changes
+// interface Props {
+//   onIconClick: () => void;
+// }
 
-const Header = ({ onIconClick }: Props) => {
+const Header = () => {
+  const { setPage } = useZenportEats(); //Requirement-4 changes
+
   return (
     <HeaderStyle>
-      <LogoWrapperStyle onClick={onIconClick}>
+      <LogoWrapperStyle onClick={() => setPage(1)}>
         <Image src="/logo/Zenport logo - blue 1.png" alt="" width={31} height={36} />
         <Image
           src="/logo/Zenport Eats Inc.@3x.png"
