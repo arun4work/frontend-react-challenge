@@ -16,7 +16,7 @@ interface Props {
 const FoodSelection = ({ foodType, foodItems, onFoodItemAdd }: Props) => {
   return (
     <div style={{ marginBottom: 16 }}>
-      <FoodSelectionTitleStyle>{foodType}</FoodSelectionTitleStyle>
+      <FoodSelectionTitleStyle data-testid="food-heading">{foodType}</FoodSelectionTitleStyle>
       {foodItems.map((foodItem, idx) => {
         return (
           <FoodSelectionCardStyle key={idx}>
