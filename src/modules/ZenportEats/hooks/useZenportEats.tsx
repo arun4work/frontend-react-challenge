@@ -92,10 +92,11 @@ export const ZenportEatsProvider = ({ children }: Props) => {
       orders: [
         ...order.orders,
         {
-          name: `Person ${order.orders.length + 1}`,
+          name: `Person ${order.numPeople + 1}`, //Requirement-3 changes
           items: [],
         },
       ],
+      numPeople: order.numPeople + 1, //Requirement-3 changes
     };
 
     setOrder(newOrder);
